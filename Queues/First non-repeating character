@@ -18,3 +18,35 @@ Input 2: A = "abcabc"
 Example Output
 Output 1: "aabbdd"
 Output 2: "aaabc#"
+
+Problem Solution :
+Time Complexity: O(n) where n=Size of string
+Space Complexity: O(n) using for the hashmap and the queue
+
+string Solution::solve(string A) {
+    unordered_map<char,int> mp;
+    queue<char> que;
+    vector<char> result;
+    string res="";
+    for(int i=0;i<A.size();i++){
+        mp[A[i]]++;
+        auto itr = mp.find(A[i]);
+        if(mp[A[i]] == 1){
+            que.push(A[i]);
+        }
+
+        while(!que.empty() && mp[que.front()]>1){
+            que.pop();
+        }
+
+        if(que.empty()) {
+            res.push_back('#');
+         } else {
+            res.push_back(que.front()); 
+        }
+        
+    }
+
+    return res;
+}
+

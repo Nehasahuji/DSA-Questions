@@ -1,0 +1,52 @@
+Problem Description:
+Given a string A denoting a stream of lowercase alphabets, you have to make a new string B.
+B is formed such that we have to find the first non-repeating character each time a character is inserted to the stream and append it at the end to B. If no non-repeating character is found, append '#' at the end of B.
+
+Problem Constraints
+1 <= |A| <= 100000
+
+Input Format
+The only argument given is string A.
+
+Output Format
+Return a string B after processing the stream of lowercase alphabets A.
+
+Example Input
+Input 1: A = "abadbc"
+Input 2: A = "abcabc"
+
+Example Output
+Output 1: "aabbdd"
+Output 2: "aaabc#"
+
+Problem Solution :
+Time Complexity: O(n) where n=Size of string
+Space Complexity: O(n) using for the hashmap and the queue
+
+string Solution::solve(string A) {
+    unordered_map<char,int> mp;
+    queue<char> que;
+    vector<char> result;
+    string res="";
+    for(int i=0;i<A.size();i++){
+        mp[A[i]]++;
+        auto itr = mp.find(A[i]);
+        if(mp[A[i]] == 1){
+            que.push(A[i]);
+        }
+
+        while(!que.empty() && mp[que.front()]>1){
+            que.pop();
+        }
+
+        if(que.empty()) {
+            res.push_back('#');
+         } else {
+            res.push_back(que.front()); 
+        }
+        
+    }
+
+    return res;
+}
+

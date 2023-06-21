@@ -14,7 +14,7 @@ void downHeapify(vector<int> &arr,int index,int n){
         if(arr[index]<arr[parent]){
             swap(arr[index],arr[parent]);
             
-            downHeapify(arr,parent,n);
+            upHeapify(arr,parent,n);
         }
     }
 }
@@ -62,7 +62,7 @@ void insertNode(vector<int> &arr,int value){
     arr.push_back(value);
     
     //step 2: rearrange the heap deheapify 
-    downHeapify(arr,arr.size()-1,arr.size());
+    upHeapify(arr,arr.size()-1,arr.size());
 }
 
 void printHeap(vector<int> &arr,int n)

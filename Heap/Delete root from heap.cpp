@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void heapify(vector<int> &arr,int index,int n){
+void downHeapify(vector<int> &arr,int index,int n){
     //initialize as root
     int smallest = index;
     
@@ -27,7 +27,7 @@ void heapify(vector<int> &arr,int index,int n){
     if(smallest!=index){
         swap(arr[smallest],arr[index]);
          //recursively call for then affected sub tree
-         heapify(arr,smallest,n);
+         downHeapify(arr,smallest,n);
     }
 }
 
@@ -38,8 +38,8 @@ void deleteRoot(vector<int> &arr){
     //Step 2: root of array with the last element as deletion became easy
     swap(arr[0],arr[n-1]);
     
-    //Step 3: heapify the remaining heap
-    heapify(arr,0,n-1);
+    //Step 3: downHeapify the remaining heap
+    downHeapify(arr,0,n-1);
     
 }
 

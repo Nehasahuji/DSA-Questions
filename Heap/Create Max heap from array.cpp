@@ -7,6 +7,7 @@ Space Complexity:O(n) // stack space
 using namespace std;
 
 
+//used to heapify the array	
 void heapify(vector<int> &arr,int index){
     //calculate size of array
     int n=arr.size();
